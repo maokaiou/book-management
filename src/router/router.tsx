@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Login from '../views/Login';
-import Register from '../views/Register';
-import Home from '../views/Home';
+import Login from '../views/login/Login';
+import Register from '../views/register/Register';
+import Home from '../views/home/Home';
 const routes =[
   {
     path: '/login',
