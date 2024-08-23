@@ -3,6 +3,7 @@ import { Form,Input, Button, message } from 'antd'
 import './index.css'
 import { booksList } from '../../utils/interfaces/api'
 import CardMessage from '../../component/card/card'
+import CreateBookModal from '../../component/book-modal/book-modal';
 interface Book {
   id:number,
   name: string,
@@ -13,6 +14,7 @@ interface Book {
 export default function Home(){
   const [bookList,setBookList] = useState<Array<Book>>([])
   const [name,setName]=useState('')
+  const [isShowBookModal,setBookModal] = useState(false)
   async function fetchData(){
     try{
       const res = await booksList(name)
@@ -33,6 +35,7 @@ export default function Home(){
   
   return(
     <div className="bookManage">
+      <CreateBookModal isOpen={isShowBookModal} handleClose={()=>setBookModal(false)}></CreateBookModal>
       <div className="title">图书管理系统</div>
       <div className='book-search'>
         <Form
@@ -48,7 +51,7 @@ export default function Home(){
             <Button type="primary" htmlType="submit">
                 搜索图书
             </Button>
-            <Button type="primary" htmlType="submit" style={{background: 'green'}} >
+            <Button type="primary" htmlType="submit" style={{background: 'green',marginLeft:'10px'}} onClick={()=>setBookModal(true)}>
                 添加图书
             </Button>
           </Form.Item>
