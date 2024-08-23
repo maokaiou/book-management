@@ -1,0 +1,25 @@
+.bookManage{
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.bookManage .title{
+  font-size: 30px;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+}
+.bookManage .book-search{
+  margin: 20px 0px;
+}
+.bookManage .book-list{
+  flex: 1;
+  overflow: hidden;
+}
+.bookManage .book-list .scroll-y{
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,19 @@
+.cardWrap {
+  width: 20%;
+  border: 1px solid #000;
+  padding: 0 10px;
+  margin-left: 12px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.cardWrap:nth-of-type(4n+0){
+  margin-left: 0px
+}
+.imgWrap{
+  flex:1
+}
+.contentWrap{
+  height: 90px;
+  padding: 10px 0px;
+}
