@@ -26,11 +26,6 @@ export default function CreateBookModal(props: CreateBookModalProps){
     }catch(error:any){
       message.error(error.response.data.message)
     }
-   
-    console.log('res',res)
-  }
-  const handleCoverChange =(fileResponse:string)=>{
-    form.setFieldsValue({ cover: fileResponse });
   }
  return(
   <Modal style={{fontSize:'16px'}}  open={props.isOpen} onOk={handleOk} onCancel={()=>props.handleClose()}>

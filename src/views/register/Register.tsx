@@ -14,7 +14,6 @@ export default function Register(){
   const onFinish = async(value:RegisterType)=>{
     try {
       const res = await register(value.username,value.password)
-      console.log('res',res)
       if(res.status === 201 || res.status === 200) {
           message.success('注册成功');
 
@@ -23,7 +22,6 @@ export default function Register(){
           }, 1000);
       }
     } catch(e: any) {
-      console.log('e',e)
         message.error(e.response.data.message);
     }
   }

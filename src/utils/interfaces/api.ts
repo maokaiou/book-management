@@ -1,12 +1,6 @@
 import { axiosInstance  } from './index'
 import { CreateBook } from '../../component/book-modal/book-modal'
-// const getLogin= async (username:string,password:string) => {
-//   console.log(username,password)
-//   return await request.post('/user/register',{
-//     username,
-//     password
-//   })
-// }
+import { Book } from '../../component/card/card'
 export async function register(username: string, password: string) {
   return await axiosInstance.post('/user/register', {
       username, password
@@ -31,4 +25,12 @@ export async function add(book:CreateBook) {
 }
 export async function booksDelete(id: number) {
   return await axiosInstance.delete(`/books/delete/${id}`)
+}
+export async function booksDetail(id: number) {
+  return await axiosInstance.get(`/books/${id}`)
+}
+export async function booksUpdate(book:Book) {
+  return await axiosInstance.put(`/books/update`,{
+    ...book
+  })
 }

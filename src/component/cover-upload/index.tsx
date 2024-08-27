@@ -29,7 +29,6 @@ const dragger = <Dragger {...props}>
 </Dragger>
 export default function CoverUpload(props: CoverUploadProps){
   onChange = props.onChange!
-  console.log('props.value',props.value)
   return props?.value ? <div>
         <img src={'http://localhost:3000/' + props.value} alt="封面" width="100" height="100"/>
         {dragger}

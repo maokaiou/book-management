@@ -4,6 +4,7 @@ import './index.css'
 import { booksList } from '../../utils/interfaces/api'
 import CardMessage from '../../component/card/card'
 import CreateBookModal from '../../component/book-modal/book-modal';
+import UpdateBookMoal from '../../component/update-modal/index';
 interface Book {
   id:number,
   name: string,
@@ -15,7 +16,9 @@ export default function Home(){
   const [bookList,setBookList] = useState<Array<Book>>([])
   const [name,setName]=useState('')
   const [num, setNum] = useState(0);
+  const [updateId, setUpdateId] = useState(0);
   const [isShowBookModal,setBookModal] = useState(false)
+  const [isUpdateBookModal,setUpdateBookModal] = useState(false)
   async function fetchData(){
     try{
       const res = await booksList(name)
@@ -38,6 +41,7 @@ export default function Home(){
   return(
     <div className="bookManage">
       <CreateBookModal isOpen={isShowBookModal} handleClose={()=>{setBookModal(false);setNum(Math.random())}} ></CreateBookModal>
+      <UpdateBookMoal id={updateId} isOpen={isUpdateBookModal} handleClose={()=>{setUpdateBookModal(false);setNum(Math.random())}} />
       <div className="title">图书管理系统</div>
       <div className='book-search'>
         <Form
@@ -62,7 +66,7 @@ export default function Home(){
       <div className='book-list'>
         <div className='scroll-y'>
           {
-            bookList.map((ele)=><CardMessage key={ele.id} book={ele} isDelete={()=>setNum(Math.random())}/>)
+            bookList.map((ele)=><CardMessage key={ele.id} book={ele} isDelete={()=>setNum(Math.random())} isUpdate={(value,id)=>{setUpdateBookModal(value);setUpdateId(id)}}/>)
           }
         </div> 
       </div>
