@@ -11,7 +11,12 @@
   margin-left: 0px
 }
 .imgWrap{
-  flex:1
+  height: 190px;
+}
+.imgWrap img{
+  width: 100%;
+  height: 100%;
+  object-fit:contain
 }
 .contentWrap{
   height: 90px;

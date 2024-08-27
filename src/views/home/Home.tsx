@@ -14,6 +14,7 @@ interface Book {
 export default function Home(){
   const [bookList,setBookList] = useState<Array<Book>>([])
   const [name,setName]=useState('')
+  const [num, setNum] = useState(0);
   const [isShowBookModal,setBookModal] = useState(false)
   async function fetchData(){
     try{
@@ -29,13 +30,14 @@ export default function Home(){
   async function searchBooks(values:{name:string}){
     setName(values.name)
   }
+  
   useEffect(()=>{
     fetchData()
-  },[name])
+  },[name, num])
   
   return(
     <div className="bookManage">
-      <CreateBookModal isOpen={isShowBookModal} handleClose={()=>setBookModal(false)}></CreateBookModal>
+      <CreateBookModal isOpen={isShowBookModal} handleClose={()=>{setBookModal(false);setNum(Math.random())}} ></CreateBookModal>
       <div className="title">图书管理系统</div>
       <div className='book-search'>
         <Form
@@ -60,7 +62,7 @@ export default function Home(){
       <div className='book-list'>
         <div className='scroll-y'>
           {
-            bookList.map((ele)=><CardMessage key={ele.id} book={ele}/>)
+            bookList.map((ele)=><CardMessage key={ele.id} book={ele} isDelete={()=>setNum(Math.random())}/>)
           }
         </div> 
       </div>

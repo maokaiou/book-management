@@ -1,5 +1,5 @@
 import { axiosInstance  } from './index'
-
+import { CreateBook } from '../../component/book-modal/book-modal'
 // const getLogin= async (username:string,password:string) => {
 //   console.log(username,password)
 //   return await request.post('/user/register',{
@@ -23,4 +23,12 @@ export async function booksList(name: string) {
       name
     }
   })
+}
+export async function add(book:CreateBook) {
+  return await axiosInstance.post(`/books/add`,{
+    ...book
+  })
+}
+export async function booksDelete(id: number) {
+  return await axiosInstance.delete(`/books/delete/${id}`)
 }
